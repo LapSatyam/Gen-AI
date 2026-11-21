@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+.button {
+  border: none;
+  outline: none;
+  padding-inline: 1rem;
+  padding-block: 0.6rem;
+  border-radius: 0.6rem;
+
+  transition: background-color 0.15s ease-in-out;
+
+  &.primary-button {
+    @apply text-xl text-zinc-50 cursor-pointer shadow-sm bg-blue-500 shadow-black font-bold hover:shadow-md hover:-translate-y-0.5 transition-all active:translate-y-0.5 active:bg-blue-600 active:shadow-sm;
+  }
+}
