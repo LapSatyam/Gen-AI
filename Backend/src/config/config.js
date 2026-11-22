@@ -11,11 +11,15 @@ if (!process.env.JWT_SECRET) {
 if (!process.env.NODE_ENV) {
   throw new Error("NODE_ENV is not defined in environment variables");
 }
+if (!process.env.GOOGLE_GENAI_API_KEY) {
+  throw new Error("GOOGLE_GENAI_API_KEY is not defined in environment variables");
+}
 
 const confi = {
   MONGO_URI: process.env.MONGO_URI,
   JWT_SECRET: process.env.JWT_SECRET,
   NODE_ENV: process.env.NODE_ENV,
+  GOOGLE_GENAI_API_KEY: process.env.GOOGLE_GENAI_API_KEY,
 };
 
 export default confi;
