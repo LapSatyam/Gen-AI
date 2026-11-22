@@ -1,12 +1,30 @@
-import { useNavigate, Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import "../auth.form.css";
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-};
+import { useAuth } from "../hooks/useAuth";
+import { useState } from "react";
 
 const Login = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await handleLogin({ email, password });
+    navigate("/");
+  };
+
   const navigate = useNavigate();
+  const { loading, handleLogin } = useAuth();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading........</h1>
+      </main>
+    );
+  }
+
   return (
     <main>
       <div className="form-container">
@@ -21,10 +39,10 @@ const Login = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="-translate-x-0.5"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="-translate-x-0.5"
             >
               <path d="M20 11v6" />
               <path d="M20 13h2" />
@@ -62,6 +80,10 @@ const Login = () => {
               </span>
             </label>
             <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
               type="email"
               name="email"
               id="email"
@@ -96,6 +118,10 @@ const Login = () => {
               </span>
             </label>
             <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              value={password}
               type="password"
               name="password"
               id="password"

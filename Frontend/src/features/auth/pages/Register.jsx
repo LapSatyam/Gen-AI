@@ -1,12 +1,31 @@
 import { Link, useNavigate } from "react-router";
 import "../auth.form.css";
-
-const handleSubmit = (e) => {
-  e.preventDefault();
-};
+import { useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    await handleRegister({ username, email, password });
+    navigate("/");
+  };
+
+  const { loading, handleRegister } = useAuth();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  if (loading) {
+    return (
+      <main>
+        <h1>Loading..........</h1>
+      </main>
+    );
+  }
 
   return (
     <main>
@@ -62,6 +81,10 @@ const Register = () => {
               </span>
             </label>
             <input
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              value={username}
               type="text"
               name="username"
               id="username"
@@ -95,6 +118,10 @@ const Register = () => {
               </span>
             </label>
             <input
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
               type="email"
               name="email"
               id="email"
@@ -129,6 +156,10 @@ const Register = () => {
               </span>
             </label>
             <input
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              value={password}
               type="password"
               name="password"
               id="password"
