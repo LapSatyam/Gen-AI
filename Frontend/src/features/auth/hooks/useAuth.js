@@ -46,14 +46,17 @@ export const useAuth = () => {
   };
 
   useEffect(() => {
-    const getAndSerUser = async () => {
-      const { user } = await profile();
-      setUser(user);
-
+    try {
+      const getAndSerUser = async () => {
+        const data = await profile();
+        setUser(data.user);
+      };
+      getAndSerUser();
+    } catch (err) {
+      console.error(err);
+    } finally {
       setLoading(false);
-    };
-
-    getAndSerUser();
+    }
   }, []);
 
   return { user, loading, handleLogin, handleLogout, handleRegister };

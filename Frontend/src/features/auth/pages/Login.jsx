@@ -88,7 +88,6 @@ const Login = () => {
               name="email"
               id="email"
               placeholder="hello@email.com"
-              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
               title="Please enter a valid email address."
               required
             />
@@ -126,10 +125,7 @@ const Login = () => {
               name="password"
               id="password"
               placeholder="✶✶✶✶✶✶395"
-              minLength={8}
-              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
-              title="Password must contain uppercase, lowercase, a number, and a special character."
-              autoComplete="new-password"
+              autoComplete="current-password"
               required
             />
             <small>Please enter a valid password</small>
