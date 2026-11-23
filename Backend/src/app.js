@@ -19,9 +19,11 @@ app.use(
 import authRouter from "./routes/auth.route.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
 import { authMiddleware } from "./middlewares/auth.middleware.js";
+import interviewRouter from "./routes/interview.route.js";
 
 // Using all the routes here
 app.use("/api/auth", authRouter);
+app.use("/api/interview", interviewRouter);
 
 // centralized error handling
 app.use(errorMiddleware);
