@@ -1,5 +1,26 @@
 @reference "tailwindcss";
 
-textarea {
-  @apply border border-gray-500/70 h-44;
+#main {
+  @apply min-h-screen w-full flex justify-center items-center p-4 gap-2;
+
+  #label {
+    @apply text-xl font-normal;
+  }
+  #left {
+    @apply w-1/2 h-full flex flex-col justify-center;
+  }
+  #right {
+    @apply w-1/2 h-full flex flex-col justify-center;
+  }
+  textarea {
+    @apply border border-gray-500/70 rounded-lg p-1 text-sm;
+  }
+
+  #upload-btn {
+    @apply cursor-pointer shadow-md text-white inset-shadow-sm/20 flex justify-center items-center p-2 border rounded-full px-3.5 py-1.5  bg-cyan-400 font-medium text-base shadow-cyan-400/40  inset-shadow-cyan-600  absolute top-1.5 right-1 active:bg-cyan-500 transition;
+  }
+
+  #generate-btn {
+    @apply cursor-pointer shadow-md text-white inset-shadow-sm/20 absolute bottom-1/4 border border-transparent px-5 py-2 rounded-full bg-blue-500  font-semibold shadow-blue-500/80  inset-shadow-blue-700 hover:shadow-lg transition ease-in hover:-translate-y-0.5 active:translate-y-0.5 active:shadow-sm flex items-center gap-1.5 pl-4;
+  }
 }
